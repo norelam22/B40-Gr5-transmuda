@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class RepeatCalendarPage extends BasePage {
 
-    ////div[@class='btn-group']
 
     @FindBy(xpath = "//a[@title='Create Calendar event']")
     public WebElement createCalendarEventButton;
@@ -24,10 +23,6 @@ public class RepeatCalendarPage extends BasePage {
     @FindBy(xpath = "//span[@class='validation-failed']")
     public WebElement errorMessage;
 
-    //Open Calendar Event Option
-    public void selectCalendarEvents() {
-        navigateToModule("Activities", "Calendar Events");
-    }
 
     //Select Create Calendar Event Button
     public void openCreateCalendarEvent() {
