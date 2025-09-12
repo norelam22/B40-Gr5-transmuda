@@ -7,7 +7,7 @@ Feature: Repeat Every input validation on Calendar Event
 
   Scenario Outline: Verify that users see error messages when enter invalid integers
     Given the user logged in as "<userType>"
-    When the user navigates to the Calendar Events module under the Activities tab
+    When the user navigate to "Activities" to "Calendar Events"
     And the user clicks the Create Calendar Event button
     When user checks the repeat checkbox
     And the user enters "<invalidValue>" in the Repeat Every input box
