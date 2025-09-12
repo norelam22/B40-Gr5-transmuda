@@ -49,8 +49,10 @@ public class US125_ManageFiltersMarketingPageStepDefs {
     @When("I uncheck {int} random filters")
     public void i_uncheck_random_filters(int uncheckedCount) {
         ManageFiltersMarketingPage.waitUntilLoaderScreenDisappear();
-        ManageFiltersMarketingPage.chooseWhichCheckboxes_toUncheck(uncheckedCount); // Method used to check uncheck the
-                                                                                    // # of boxes you would like to unchecked
+        //ManageFiltersMarketingPage.chooseWhichCheckboxes_toUncheck(uncheckedCount); // Method used to check uncheck the
+                                                                                    // # of boxes you would like to unchecked ---> (Old) Version 1.0
+
+        ManageFiltersMarketingPage.uncheckCheckboxes(uncheckedCount); // (New) Version 2.0 --> DYNAMIC
     }
 
     @Then("I should see {int} filters checked")

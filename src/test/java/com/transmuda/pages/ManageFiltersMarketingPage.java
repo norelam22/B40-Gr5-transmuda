@@ -15,13 +15,6 @@ import java.util.List;
 public class ManageFiltersMarketingPage extends BasePage {
 
 
-    LoginPage loginPage;
-
-    @Override
-    public void waitUntilLoaderScreenDisappear() {
-        super.waitUntilLoaderScreenDisappear();
-    }
-
     @FindBy(xpath = "(//span[contains(text(),'Marketing')]/..)[1]")
     public WebElement marketingButton;
 
@@ -37,26 +30,13 @@ public class ManageFiltersMarketingPage extends BasePage {
     @FindBy(xpath = "//select[@data-action='add-filter-select']")
     public WebElement parentElementCheckbox;
 
-    //    public int loopThroughCheckboxesInt() {
-//        Select filter = new Select(parentElementCheckbox);
-//
-//        List<WebElement> listOfFilters = filter.getOptions();
-//        listOfFilters.remove(0);
-//
-//
-//        int count = 0;
-//
-//        for (WebElement eachCheckbox : listOfFilters) {
-//            if (eachCheckbox.isSelected()) {
-//                count++;
-//                BrowserUtils.sleep(1);
-//            }
-//            return count;
-//        }
-//        return count;
-//    }
+
     @FindBy(xpath = "//ul[@class='ui-multiselect-checkboxes ui-helper-reset fixed-li']//input[@type='checkbox']")
     public List<WebElement> checkboxes;
+
+
+
+
 
 
 //Get selected count method for checkboxes
@@ -149,6 +129,23 @@ public void chooseWhichCheckboxes_toUncheck(int unCheckedCount) {
     }
 
 
+// Update method above^ Method below is dynamic --> New Version 2.0
+public void uncheckCheckboxes(int uncheckCount) {
+    int unchecked = 0;
+    for (int i = 0; i < checkboxes.size(); i++) {
+        WebElement checkbox = checkboxes.get(i);
+        if (checkbox.isSelected() && checkbox.isEnabled() && checkbox
+                .isDisplayed()) {
+            checkbox.click();
+            unchecked++;
+        }
+        if (unchecked >= uncheckCount) {
+            break;
+        }
+    }
+}
+
+
 public void ifBoxIsChecked_Uncheck(int desiredCheckbox) {
 
     for (WebElement checkbox : checkboxes) {
@@ -182,7 +179,7 @@ public boolean loopThroughCheckboxesBoolean() {
 //Emanuele's login method (practice)
 public void loginAs(String roleType) {
 
-    loginPage = new LoginPage();
+    LoginPage loginPage = new LoginPage();
 
     if (roleType.trim().equalsIgnoreCase("driver")) {
         loginPage.login(ConfigurationReader.getProperty("driver_username"),
