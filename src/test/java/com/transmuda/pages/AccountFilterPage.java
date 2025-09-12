@@ -27,25 +27,6 @@ public class AccountFilterPage extends BasePage {
         BrowserUtils.waitForInvisibilityOf(loaderMask);
         filtersButton.click();
     }
-//      emanuele check boxes count code
-//    @FindBy(xpath = "//ul[@class='ui-multiselect-checkboxes ui-helper-reset fixed-li']//input[@type='checkbox']")
-//    public List<WebElement> checkboxes;
-//
-//    public void uncheckSelectedCheckBoxes(int uncheckedCount) {
-//
-//        waitUntilLoaderScreenDisappear();
-//        int unchecked = 0;
-//
-//        for (WebElement checkbox : checkboxes) {
-//            if (checkbox.isSelected() && checkbox.isEnabled() && checkbox
-//                    .isDisplayed()) {
-//                checkbox.click();
-//                unchecked++;
-//            }
-//            if (unchecked >= uncheckedCount) {
-//                break;
-//            }
-//        }
-//    }
+
 
 }
