@@ -59,8 +59,8 @@ public class ManageFiltersMarketingPage extends BasePage {
     public List<WebElement> checkboxes;
 
 
-    //Get selected count method for checkboxes
-    public int getSelectedCount() {
+//Get selected count method for checkboxes
+public int getSelectedCount() {
         int count = 0;
         for (WebElement checkbox : checkboxes) {
             if (checkbox.isSelected()) {
@@ -71,8 +71,8 @@ public class ManageFiltersMarketingPage extends BasePage {
     }
 
 
-    // Chose the amount of checkboxes you would like to uncheck
-    public void chooseWhichCheckboxes_toUncheck(int unCheckedCount) {
+// Chose the amount of checkboxes you would like to uncheck
+public void chooseWhichCheckboxes_toUncheck(int unCheckedCount) {
         BrowserUtils.sleep(2);
 
        try {
@@ -149,8 +149,6 @@ public class ManageFiltersMarketingPage extends BasePage {
     }
 
 
-
-
 public void ifBoxIsChecked_Uncheck(int desiredCheckbox) {
 
     for (WebElement checkbox : checkboxes) {
@@ -181,7 +179,7 @@ public boolean loopThroughCheckboxesBoolean() {
 }
 
 
-// Emanuele's login method (practice)
+//Emanuele's login method (practice)
 public void loginAs(String roleType) {
 
     loginPage = new LoginPage();
