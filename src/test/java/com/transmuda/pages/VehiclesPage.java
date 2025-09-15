@@ -12,10 +12,7 @@ import java.util.List;
 
 public class VehiclesPage extends BasePage {
 
-    public VehiclesPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
 
-    }
 
     @FindBy(xpath = "(//span[@class='title title-level-1'])[2]")
     public WebElement fleetPage;
