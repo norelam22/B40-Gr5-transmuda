@@ -20,8 +20,13 @@ Feature: Access to Vehicle Contracts page
   Rule: Drivers cannot access Vehicle Contracts and see an authorization message (AC2)
 
 
-    Scenario: Driver is blocked from Vehicle Contracts page
+    Scenario Outline: Driver is blocked from Vehicle Contracts page
       Given the user logged in as "<userType>"
       When I navigate to the Vehicle Contracts page
       Then I should see an authorization error "You do not have permission to perform this action."
       And the page URL should not be "https://qa.transmuda.com/entity/Extend_Entity_VehicleContract"
+
+      Examples:
+        | userType |
+        | Driver   |
+        | Driver   |

@@ -4,6 +4,7 @@ import com.transmuda.utilities.BrowserUtils;
 import com.transmuda.utilities.Driver;
 import io.cucumber.java.en.*;
 import com.transmuda.pages.VehicleContractsPage;
+import org.junit.Assert;
 
 public class US115_VehiclesContractsStepDefs {
 
@@ -28,13 +29,16 @@ public class US115_VehiclesContractsStepDefs {
     }
 
     @Then("I should see an authorization error {string}")
-    public void i_should_see_an_authorization_error(String string) {
+    public void i_should_see_an_authorization_error(String expectedMessage) {
+        Assert.assertEquals(vcPage.errorMessage.getText(), expectedMessage);
 
     }
 
     @Then("the page URL should not be {string}")
-    public void the_page_url_should_not_be(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_page_url_should_not_be(String expectedURL) {
+       //String actualURL = Driver.getDriver().getCurrentUrl();
+        BrowserUtils.verifyURLContains(expectedURL);
+
+
     }
 }
