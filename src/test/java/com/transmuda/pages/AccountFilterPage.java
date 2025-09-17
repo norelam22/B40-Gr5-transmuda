@@ -1,6 +1,7 @@
 package com.transmuda.pages;
 
 import com.transmuda.utilities.BrowserUtils;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -20,5 +21,9 @@ public class AccountFilterPage extends BasePage {
         filtersButton.click();
     }
 
+    public void listOfFilters(List<String> expectedList){
+        List<String> actualOptions = BrowserUtils.getElementsText(getAccountsDorpDownElement);
+        Assert.assertEquals(actualOptions, expectedList);
 
+    }
 }

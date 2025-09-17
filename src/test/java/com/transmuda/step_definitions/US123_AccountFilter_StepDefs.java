@@ -23,8 +23,7 @@ public class US123_AccountFilter_StepDefs {
     @Then("the user should see the following 8 filters:")
     public void theUserShouldSeeTheFollowingFilters(List<String> expected) {
 
-        List<String> actualOptions = BrowserUtils.getElementsText(us123Pages.getAccountsDorpDownElement);
-        Assert.assertEquals(actualOptions, expected);
+        us123Pages.listOfFilters(expected);
     }
 
 
