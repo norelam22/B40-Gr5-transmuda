@@ -9,7 +9,7 @@ Feature: Filter customers' information on the Accounts page
 
   Scenario Outline: Verify visibility and names of filter items
     Given the user logged in as "<userType>"
-    When the user navigate to "Customers" and to "Accounts" module
+    When the user navigate to "Customers" to "Accounts"
     And the user views the available filter options
     Then the user should see the following 8 filters:
       | Account Name: All  |

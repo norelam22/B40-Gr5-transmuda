@@ -14,13 +14,6 @@ public class US123_AccountFilter_StepDefs {
 
     AccountFilterPage us123Pages = new AccountFilterPage();
 
-    @When("the user navigate to {string} and to {string} module")
-    public void the_user_navigate_to_to(String tab, String module) {
-
-        us123Pages.waitUntilLoaderScreenDisappear();
-        us123Pages.navigateToModule(tab, module);
-    }
-
     @When("the user views the available filter options")
     public void the_user_views_the_available_filter_options() {
 
