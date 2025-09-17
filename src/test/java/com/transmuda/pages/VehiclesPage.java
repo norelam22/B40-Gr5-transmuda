@@ -9,9 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Random;
 
 public class VehiclesPage extends BasePage {
-
 
 
     @FindBy(xpath = "(//span[@class='title title-level-1'])[2]")
@@ -32,6 +32,30 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//input[@data-role='select-row-cell']")
     public List<WebElement> allCheckBoxes;
 
-    @FindBy(xpath = "(//input[@data-role='select-row-cell'])[3]")
-    public WebElement randomCarSelected;
+    @FindBy(xpath = "//input[@data-role='select-row-cell']")
+    public List<WebElement> randomCarSelected;
+
+    public void selectRandomCar() {
+
+        Random random = new Random();
+        int randomNumber = random.nextInt(23); //0 to 23 (excluded)
+        randomCarSelected.get(randomNumber).click();
+
+    }
+
+
+    public void countSelected() {
+
+
+        int selectedCount = 0;
+
+        for (WebElement each : allCheckBoxes) {
+            if (each.isSelected()) {
+                selectedCount++;
+
+            }
+        }
+
+        Assert.assertEquals("More than one or none selected", 1, selectedCount);
+    }
 }

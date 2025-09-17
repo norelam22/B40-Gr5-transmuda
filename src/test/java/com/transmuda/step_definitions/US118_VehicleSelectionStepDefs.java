@@ -3,11 +3,15 @@ package com.transmuda.step_definitions;
 import com.transmuda.pages.VehiclesPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
+import java.util.Random;
+
 
 public class US118_VehicleSelectionStepDefs {
+
 
     VehiclesPage vehiclesPage = new VehiclesPage();
 
@@ -32,6 +36,7 @@ public class US118_VehicleSelectionStepDefs {
     @Then("all vehicle checkboxes should be checked")
     public void all_vehicle_checkboxes_should_be_checked() {
 
+
         for (WebElement each : vehiclesPage.allCheckBoxes) {
 
             Assert.assertTrue("Expected checkbox to be checked, but it was unchecked", each.isSelected());
@@ -43,7 +48,7 @@ public class US118_VehicleSelectionStepDefs {
     @Then("the user checks the checkbox of a specific vehicle")
     public void the_user_checks_the_checkbox_of_a_specific_vehicle() {
 
-        vehiclesPage.randomCarSelected.click();
+        vehiclesPage.selectRandomCar();
 
     }
 
@@ -51,15 +56,8 @@ public class US118_VehicleSelectionStepDefs {
     @Then("only that vehicle’s checkbox should be checked")
     public void only_that_vehicle_s_checkbox_should_be_checked() {
 
-        int selectedCount = 0;
-        for (WebElement each : vehiclesPage.allCheckBoxes) {
-            if (each.isSelected()) {
-                selectedCount++;
 
-            }
-        }
-
-        Assert.assertEquals("More than one or none selected", 1, selectedCount);
+        vehiclesPage.countSelected();
 
     }
 }
