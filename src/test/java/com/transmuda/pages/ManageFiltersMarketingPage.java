@@ -21,7 +21,7 @@ public class ManageFiltersMarketingPage extends BasePage {
     @FindBy(xpath = "(//*[contains(text(),'Campaigns')])[1]")
     public WebElement campaignButton;
 
-    @FindBy(xpath = "(//div//a[@href='#'])[23]")
+    @FindBy(xpath = "//a[@title='Filters']")
     public WebElement filterButton;
 
     @FindBy(xpath = "//a[@class='add-filter-button']/..")
@@ -31,7 +31,7 @@ public class ManageFiltersMarketingPage extends BasePage {
     public WebElement parentElementCheckbox;
 
 
-    @FindBy(xpath = "//ul[@class='ui-multiselect-checkboxes ui-helper-reset fixed-li']//input[@type='checkbox']")
+    @FindBy(css = "ul input[name='multiselect_0']")
     public List<WebElement> checkboxes;
 
 
@@ -131,25 +131,26 @@ public void chooseWhichCheckboxes_toUncheck(int unCheckedCount) {
 
 // Update method above^ Method below is dynamic --> New Version 2.0
 public void uncheckCheckboxes(int uncheckCount) {
+    int unchecked = 0;
 
+    while (unchecked < uncheckCount) {
 
-  try {
-      int unchecked = 0;
-      for (int i = 0; i < checkboxes.size(); i++) {
-          WebElement checkbox = checkboxes.get(i);
-          if (checkbox.isSelected() && checkbox.isEnabled() && checkbox
-                  .isDisplayed()) {
-              checkbox.click();
-              unchecked++;
-          }
-          if (unchecked >= uncheckCount) {
-              break;
-          }
-      }
-  } catch (StaleElementReferenceException ignore) {
-
-  }
+        for (WebElement checkbox : checkboxes) {
+            try {
+                if (checkbox.isSelected() && checkbox.isEnabled() && checkbox.isDisplayed()) {
+                    checkbox.click();
+                    unchecked++;
+                    break; // Exit inner loop to re-fetch fresh list
+                }
+            } catch (StaleElementReferenceException e) {
+                // Optional: log or retry logic
+                System.out.println("Stale element detected, retrying...");
+            }
+        }
+    }
 }
+
+
 
 
 public void ifBoxIsChecked_Uncheck(int desiredCheckbox) {
