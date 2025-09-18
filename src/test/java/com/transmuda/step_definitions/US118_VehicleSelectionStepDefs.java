@@ -3,11 +3,9 @@ package com.transmuda.step_definitions;
 import com.transmuda.pages.VehiclesPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
-import java.util.Random;
 
 
 public class US118_VehicleSelectionStepDefs {
