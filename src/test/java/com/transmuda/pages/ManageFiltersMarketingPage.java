@@ -131,18 +131,24 @@ public void chooseWhichCheckboxes_toUncheck(int unCheckedCount) {
 
 // Update method above^ Method below is dynamic --> New Version 2.0
 public void uncheckCheckboxes(int uncheckCount) {
-    int unchecked = 0;
-    for (int i = 0; i < checkboxes.size(); i++) {
-        WebElement checkbox = checkboxes.get(i);
-        if (checkbox.isSelected() && checkbox.isEnabled() && checkbox
-                .isDisplayed()) {
-            checkbox.click();
-            unchecked++;
-        }
-        if (unchecked >= uncheckCount) {
-            break;
-        }
-    }
+
+
+  try {
+      int unchecked = 0;
+      for (int i = 0; i < checkboxes.size(); i++) {
+          WebElement checkbox = checkboxes.get(i);
+          if (checkbox.isSelected() && checkbox.isEnabled() && checkbox
+                  .isDisplayed()) {
+              checkbox.click();
+              unchecked++;
+          }
+          if (unchecked >= uncheckCount) {
+              break;
+          }
+      }
+  } catch (StaleElementReferenceException ignore) {
+
+  }
 }
 
 
