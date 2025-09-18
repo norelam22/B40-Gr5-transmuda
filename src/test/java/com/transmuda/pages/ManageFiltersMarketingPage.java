@@ -21,7 +21,7 @@ public class ManageFiltersMarketingPage extends BasePage {
     @FindBy(xpath = "(//*[contains(text(),'Campaigns')])[1]")
     public WebElement campaignButton;
 
-    @FindBy(xpath = "(//div//a[@href='#'])[23]")
+    @FindBy(xpath = "//a[@title='Filters']")
     public WebElement filterButton;
 
     @FindBy(xpath = "//a[@class='add-filter-button']/..")
@@ -31,7 +31,7 @@ public class ManageFiltersMarketingPage extends BasePage {
     public WebElement parentElementCheckbox;
 
 
-    @FindBy(xpath = "//ul[@class='ui-multiselect-checkboxes ui-helper-reset fixed-li']//input[@type='checkbox']")
+    @FindBy(css = "ul input[name='multiselect_0']")
     public List<WebElement> checkboxes;
 
 

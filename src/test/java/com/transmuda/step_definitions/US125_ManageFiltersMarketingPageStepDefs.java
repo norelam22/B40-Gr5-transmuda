@@ -37,7 +37,7 @@ public class US125_ManageFiltersMarketingPageStepDefs {
         ManageFiltersMarketingPage.waitUntilLoaderScreenDisappear();
         ManageFiltersMarketingPage.manageFiltersButton.click();           // Click "Manage Filters" button
 
-        expectedResult = 5;
+
         int actualResult = ManageFiltersMarketingPage.getSelectedCount(); // Actual Result -> this method
                                                                          // checks if each filter is selected
 
