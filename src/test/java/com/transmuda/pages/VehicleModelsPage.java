@@ -1,5 +1,6 @@
 package com.transmuda.pages;
 
+import com.transmuda.utilities.BrowserUtils;
 import com.transmuda.utilities.Driver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
@@ -17,26 +18,23 @@ public class VehicleModelsPage extends BasePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-
-    private final By headerCells = By.cssSelector("thead th.grid-cell.grid-header-cell");
-
-
     public List<String> getColumnHeaders() {
-        WebDriver driver = Driver.getDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(12));
-        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(headerCells, 0));
+        BrowserUtils.sleep(5);
+        List<WebElement> columnsHeaders=Driver.getDriver().findElements(By.xpath("//table/thead//th[contains(@class,'grid-cell grid-header-cell grid-header-cell')]"));
 
-        List<WebElement> cells = driver.findElements(headerCells);
-        List<String> headers = new ArrayList<>();
-        for (WebElement c : cells) {
-            String t = c.getText().trim();
-            if (!t.isBlank()) headers.add(t);
+        List<String> text = new ArrayList<>();
+        for (WebElement each : columnsHeaders) {
+            String header=each.getText().trim();
+
+            System.out.println("header = " + header);
+            if (!text.contains(header)&& !header.isEmpty()){
+                text.add(header);
+            }
+
         }
-        return headers;
+        return text;
     }
 
 
-    public void navigateToModule(String tab, String module) {
-        super.navigateToModule(tab, module);
-    }
+
 }
