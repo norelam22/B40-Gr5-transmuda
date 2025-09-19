@@ -32,9 +32,9 @@ public class US137_VehicleModelsDefs {
     }
 
 
-    @Then("^the table should contain the following column headers:?$")
-    public void the_table_should_contain_the_following_column_headers(io.cucumber.datatable.DataTable dataTable) {
-        List<String> expectedHeaders = dataTable.asList();
+    @Then("the table should contain the following column headers:")
+    public void the_table_should_contain_the_following_column_headers(List<String> expectedHeaders) {
+
         List<String> actualHeaders   = vehicleModelsPage.getColumnHeaders();
 
         System.out.println("Expected -> " + expectedHeaders);
